@@ -119,7 +119,7 @@ class _SearchState extends State<Search> {
                       CustomPaint( //                       <-- CustomPaint widget
         size: Size(10, 10),
         painter: MyPainter(
-          building_indicator=='Nudas nad regala' ?
+          building_indicator=='Nudas and Regala' ?
           [
             Offset(-320, 550),
     Offset(-295, 550),
@@ -130,28 +130,33 @@ class _SearchState extends State<Search> {
    Offset(-190, 140),
    Offset(-90, 180),
         ] : 
-         building_indicator=='Nudas nad regala' ?
+         building_indicator=='Old Science Building' ?
           [
-            Offset(-320, 550),
+        Offset(-320, 550),
+    Offset(-295, 550),
+     Offset(-295, 470),
+  Offset(-205, 470),
+   Offset(-205, 480),
+        ]  : 
+         building_indicator=='Library' ?
+          [
+          Offset(-320, 550),
+    Offset(-100, 550),
+    Offset(-100, 440),
+   Offset(-100, 440),
+    Offset(-30, 440),
+   Offset(-30, 450),
+        ]  : building_indicator=='Apillado Hall' ?
+          [
+          Offset(-320, 550),
     Offset(-295, 550),
      Offset(-295, 400),
    Offset(-255, 320),
      Offset(-240, 320),
    Offset(-240, 260),
-   Offset(-190, 140),
-   Offset(-90, 180),
-        ]  : 
-         building_indicator=='Nudas nad regala' ?
-          [
-            Offset(-320, 550),
-    Offset(-295, 550),
-     Offset(-295, 400),
-   Offset(-255, 320),
-     Offset(-240, 320),
-   Offset(-240, 260),
-   Offset(-190, 140),
-   Offset(-90, 180),
-        ]  : 
+   Offset(-220, 190),
+   Offset(-230, 190),
+        ] : 
         
           [
                    Offset(-320, 550),
