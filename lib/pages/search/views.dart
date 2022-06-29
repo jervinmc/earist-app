@@ -6,13 +6,14 @@ import 'package:http/http.dart' as http;
 import 'package:get/get_connect.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'dart:ui' as ui;
 class Search extends StatefulWidget {
   const Search({ Key? key }) : super(key: key);
 
   @override
   State<Search> createState() => _SearchState();
 }
-
+var buildingLabel ='';
 class _SearchState extends State<Search> {
     List tiles = [];
     var building_indicator = '';
@@ -34,6 +35,12 @@ class _SearchState extends State<Search> {
     String jsonsDataString = response.body.toString();
     final _data = jsonDecode(jsonsDataString);
     building_indicator = _data1[0]['building_name'];
+    buildingLabel = building_indicator;
+    print("okayyyy");
+    setState(() {
+      
+    });
+    print(buildingLabel);
    floor_indicator = _data1[0]['floor'];
    label_indicator = jsonDecode(_data1[0]['tiles'])[0]['label'];
    print(label_indicator);
@@ -99,8 +106,8 @@ class _SearchState extends State<Search> {
                         ),
               ],
             ) : Container(
-              height:700,
-          
+              height:750,
+              width:750,
               decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/NEW_2.png"),
@@ -109,6 +116,53 @@ class _SearchState extends State<Search> {
                 ),
                 child: Column(
               children: [
+                      CustomPaint( //                       <-- CustomPaint widget
+        size: Size(10, 10),
+        painter: MyPainter(
+          building_indicator=='Nudas nad regala' ?
+          [
+            Offset(-320, 550),
+    Offset(-295, 550),
+     Offset(-295, 400),
+   Offset(-255, 320),
+     Offset(-240, 320),
+   Offset(-240, 260),
+   Offset(-190, 140),
+   Offset(-90, 180),
+        ] : 
+         building_indicator=='Nudas nad regala' ?
+          [
+            Offset(-320, 550),
+    Offset(-295, 550),
+     Offset(-295, 400),
+   Offset(-255, 320),
+     Offset(-240, 320),
+   Offset(-240, 260),
+   Offset(-190, 140),
+   Offset(-90, 180),
+        ]  : 
+         building_indicator=='Nudas nad regala' ?
+          [
+            Offset(-320, 550),
+    Offset(-295, 550),
+     Offset(-295, 400),
+   Offset(-255, 320),
+     Offset(-240, 320),
+   Offset(-240, 260),
+   Offset(-190, 140),
+   Offset(-90, 180),
+        ]  : 
+        
+          [
+                   Offset(-320, 550),
+        Offset(-100, 550),
+        Offset(-100, 440),
+      Offset(-100, 440),
+        Offset(30, 180),
+          Offset(70, 180),
+        ]
+        ),
+      ),
                 for (var i in tiles)
                   Column(
                     children: [
@@ -165,5 +219,131 @@ class _SearchState extends State<Search> {
           ],
         ),
     );
+  }
+}
+class MyPainter extends CustomPainter { //         <-- CustomPainter class
+   final points;
+  MyPainter(this.points);
+  @override
+ 
+  void paint(Canvas canvas, Size size) {
+  final pointMode = ui.PointMode.polygon;
+  // library
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-100, 550),
+  //   Offset(-100, 440),
+  //  Offset(-100, 440),
+  //   Offset(-30, 440),
+  //  Offset(-30, 450),
+  // ];
+
+  //old science building
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 470),
+  // Offset(-205, 470),
+  //  Offset(-205, 480),
+  // //  Offset(-30, 450),
+  // ];
+
+
+//highschool
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-190, 140),
+  // ];
+
+  //nudas and regala
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-190, 140),
+  //  Offset(-90, 180),
+  // ];
+
+
+  //appilado hall
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-220, 190),
+  //  Offset(-230, 190),
+  // ];
+
+  //engineering hall
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-220, 190),
+  //  Offset(-230, 190),
+  // ];
+
+//  final points = [
+//           Offset(-320, 550),
+//         Offset(-100, 550),
+//         Offset(-100, 440),
+//       Offset(-100, 440),
+//         Offset(30, 180),
+//           Offset(70, 180),
+//       //   Offset(-100, 440),
+//       // Offset(-100, 440),
+//       //   Offset(30, 180),
+//       //     Offset(70, 180),
+//       ];
+   // library
+  //  if(buildingLabel=='Library'){
+  //         final points = [
+  //       Offset(-320, 550),
+  //       Offset(-100, 550),
+  //       Offset(-100, 440),
+  //     Offset(-100, 440),
+  //       Offset(30, 180),
+  //         Offset(70, 180),
+  //     ];    
+  //  }
+  //  else{
+  //     final points = [
+  //     //   Offset(-320, 550),
+  //     //   Offset(-100, 550),
+  //     //   Offset(-100, 440),
+  //     // Offset(-100, 440),
+  //     //   Offset(30, 180),
+  //     //     Offset(70, 180),
+  //     //   Offset(-100, 440),
+  //     // Offset(-100, 440),
+  //     //   Offset(30, 180),
+  //     //     Offset(70, 180),
+  //     ];
+  //  }
+  
+  final paint = Paint()
+    ..color = Colors.black
+    ..strokeWidth = 4
+    ..strokeCap = StrokeCap.round;
+  canvas.drawPoints(pointMode, points, paint);
+}
+
+  @override
+  bool shouldRepaint(CustomPainter old) {
+    return false;
   }
 }

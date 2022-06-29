@@ -7,6 +7,9 @@ import 'package:http/http.dart' as http;
 import 'package:get/get_connect.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'dart:ui' as ui;
+
+var buildingLabel ='';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -36,7 +39,15 @@ class _HomeState extends State<Home> {
     setState(() {});
     // print(_data);
   }
-
+  @override
+  void paint(Canvas canvas, Size size) {
+  final p1 = Offset(50, 50);
+  final p2 = Offset(250, 150);
+  final paint = Paint()
+    ..color = Colors.black
+    ..strokeWidth = 4;
+  canvas.drawLine(p1, p2, paint);
+}
   @override
   void initState() {
     super.initState();
@@ -71,7 +82,10 @@ class _HomeState extends State<Home> {
               Text('EARIST',style:TextStyle(color: Color(0xffffff00))),
               IconButton(onPressed: (){
                 Get.toNamed('/search');
-              }, icon: Icon(Icons.search))
+              }, icon: Icon(Icons.search)),
+              //     IconButton(onPressed: (){
+              //   Get.toNamed('/test');
+              // }, icon: Icon(Icons.search))
             ],
           ),
         ),
@@ -89,7 +103,10 @@ class _HomeState extends State<Home> {
                 ),
                 child: Column(
               children: [
-               
+                CustomPaint( //                       <-- CustomPaint widget
+        size: Size(10, 10),
+        painter: MyPainter(),
+      ),
                 for (var i in tiles)
                   Column(
                     children: [
@@ -147,5 +164,101 @@ class _HomeState extends State<Home> {
             ))
           ],
         ));
+  }
+}
+class MyPainter extends CustomPainter { //         <-- CustomPainter class
+  @override
+  void paint(Canvas canvas, Size size) {
+  final pointMode = ui.PointMode.polygon;
+  // library
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-100, 550),
+  //   Offset(-100, 440),
+  //  Offset(-100, 440),
+  //   Offset(-30, 440),
+  //  Offset(-30, 450),
+  // ];
+
+  //old science building
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 470),
+  // Offset(-205, 470),
+  //  Offset(-205, 480),
+  // //  Offset(-30, 450),
+  // ];
+
+
+//highschool
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-190, 140),
+  // ];
+
+  //nudas and regala
+  //  final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-190, 140),
+  //  Offset(-90, 180),
+  // ];
+
+
+  //appilado hall
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-220, 190),
+  //  Offset(-230, 190),
+  // ];
+
+  //engineering hall
+  // final points = [
+  //   Offset(-320, 550),
+  //   Offset(-295, 550),
+  //    Offset(-295, 400),
+  //  Offset(-255, 320),
+  //    Offset(-240, 320),
+  //  Offset(-240, 260),
+  //  Offset(-220, 190),
+  //  Offset(-230, 190),
+  // ];
+
+
+   // library
+  final points = [
+    Offset(-320, 550),
+    Offset(-100, 550),
+    Offset(-100, 440),
+   Offset(-100, 440),
+    Offset(30, 180),
+      Offset(70, 180),
+  ];
+  
+  final paint = Paint()
+    ..color = Colors.black
+    ..strokeWidth = 4
+    ..strokeCap = StrokeCap.round;
+  canvas.drawPoints(pointMode, points, paint);
+}
+
+  @override
+  bool shouldRepaint(CustomPainter old) {
+    return false;
   }
 }

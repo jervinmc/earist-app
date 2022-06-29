@@ -4,6 +4,7 @@ import 'package:earistapp/pages/room/views.dart';
 import 'package:earistapp/pages/search/views.dart';
 import 'package:earistapp/pages/search_floor/views.dart';
 import 'package:earistapp/pages/search_room/views.dart';
+import 'package:earistapp/pages/test/views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/search", page:()=>Search()),
         GetPage(name: "/room_searched", page:()=>SearchFloor()),
         GetPage(name: "/search_room", page:()=>SearchRoom()),
+        GetPage(name: "/test", page:()=>Test()),
         
         // GetPage(name: "/mappages", page:()=>TestMapPolyline()),
         // GetPage(name: "/signup", page:()=>SignUp()),
